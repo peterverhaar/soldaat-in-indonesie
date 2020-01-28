@@ -8,8 +8,7 @@ Volg de instructies die worden gegeven voor het installeren van de software op m
 
 Voordat je begint te werken met Python en Jupyter Notebooks is het handig om eerst een apart map voor dit project aan te maken op je computer. Volg, nadat de map is aangemaakt, de volgende stappen:
 
-* Open de GitHub-repository met de code waar mee wordt gewerkt.
-* Klik vervolgens of "Clone or download" > "Download ZIP".
+* Klik in deze GitHub-repository op "Clone or download" > "Download ZIP".
 * Sla het ZIP-bestand op in de eerder aangemaakte map.
 * Vergeet het ZIP-bestand ook niet uit te pakken.
 * Download hierna het corpus vanaf de volgende URL: https://surfdrive.surf.nl/files/index.php/s/c5ckNo4UyPrlgaY. Selecteer alle bestanden en klik op 'download'. Sla de bestanden op in de voor dit project aangemaakte map, in een submap met de naam 'Corpus'.
