@@ -205,6 +205,48 @@ def collocation( book , searchTerm , distance ):
 
 
 
+
+def cooccurence( book , searchTerm1 , searchTerm2 , distance ):
+
+    global lines
+    global currentBook
+
+    print( book )
+
+    #regex = r'\b' + searchTerm1 + '\s+(\w+\s+){,' + str(distance) + '}\s+' + searchTerm2
+
+    regex = r'\b' + searchTerm1 + '\b\s+(\w+)\s+'
+    print( regex )
+
+    matches = []
+
+    if book != currentBook:
+        readFile(book)
+
+    paragraph = ''
+
+    parLength = 0
+
+    for line in lines:
+        line = line.strip()
+
+        ## Short lines are combined with previous lines
+        ## to ensure that there are
+        ## paragraphs of at least 300 characters long
+        if parLength < 300:
+            parLength += len(line)
+            paragraph += line + ' '
+        else:
+            parLength = 0
+            hits = re.findall( regex , paragraph )
+            for h in hits:
+                matches.append(h)
+
+    return matches
+
+
+
+
 def collocationPos( book , searchTerm , distance, posFilter ):
 
     ns = {'t': 'http://www.tei-c.org/ns/1.0' }
@@ -434,8 +476,12 @@ def showYear( book ):
     if len(metadata) == 0:
         readMetadata()
 
-    return metadata[ book ][0]
+    year = ''
 
+    if book in metadata:
+        year = metadata[ book ][0]
+    if re.search( '\d{4}' , year ):
+        return int(year)
 
 
 def countLexiconWords( book , file ):
