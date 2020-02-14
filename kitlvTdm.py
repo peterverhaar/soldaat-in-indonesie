@@ -102,8 +102,6 @@ def removeStopwords( wordsDict ):
     mfw = []
     wordsDict2 = dict()
 
-    for w in wordsDict:
-        w = w.lower()
 
     try:
         mfwFile = open( 'mfw.txt' )
@@ -114,8 +112,9 @@ def removeStopwords( wordsDict ):
         print("Cannot read the list of stopwords!")
 
     for w in wordsDict:
-        if not( w in mfw ):
-            wordsDict2[w] = wordsDict[w]
+        if not( w.lower() in mfw ):
+            if len(w) > 1:
+                wordsDict2[w] = wordsDict[w]
 
     return wordsDict2
 
