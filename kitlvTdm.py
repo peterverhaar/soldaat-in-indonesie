@@ -113,7 +113,7 @@ def removeStopwords( wordsDict ):
 
     for w in wordsDict:
         if not( w.lower() in mfw ):
-            if len(w) > 1:
+            if len(w) > 1 and not( re.search( '^\d+$' , w ) ):
                 wordsDict2[w] = wordsDict[w]
 
     return wordsDict2
